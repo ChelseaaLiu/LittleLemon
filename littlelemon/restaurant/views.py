@@ -35,6 +35,9 @@ class MenuItemsView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
 class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
